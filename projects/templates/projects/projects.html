@@ -9,11 +9,33 @@
 </head>
 <body>
     {% block content %}
+        {% comment %} {% if  number > 10%}
+            <p>number is greater than 10</p>
+
+        {% elif  number == 10 %}
+            <p>Number is 10</p>
+
+        {% else %}
+        <p>Number is lees then 10</p>
+
+        {% endif %} {% endcomment %}
+
+        <p>Hello you are on the {{page}} page</p>
+    
     <h1>Projects Template</h1>
-    <h3>Lorem ipsum dolor sit 
-        amet consectetur adipisicing elit. 
-        Similique consectetur corrupti repudiandae 
-        .</h3>
+    <hr>
+
+    <h1>Projects</h1>
+
+    <ul>
+        {% for project in  projectsList %}
+            <li>
+                Title: <a href="{% url 'project' project.id %}">{{project.title}}</a> ---
+                 {{project.description}}.
+            </li>
+        {% endfor %}
+    </ul>
+
     {% endblock content %}
 </body>
 </html>
